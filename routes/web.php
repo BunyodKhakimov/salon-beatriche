@@ -43,9 +43,8 @@ Route::prefix('backend')->group(function(){
     Route::resource('user', UserController::class);
     Route::resource('order', OrderController::class);
     Route::resource('review', ReviewController::class);
-    Route::resource('skill', SkillController::class);
-    Route::resource('service', ServiceController::class);
-
+    Route::resource('skill', SkillController::class)->except(['store', 'update']);
+    Route::resource('service', ServiceController::class)->except(['store', 'update']);
 });
 
 Auth::routes();

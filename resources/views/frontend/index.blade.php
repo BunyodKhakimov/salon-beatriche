@@ -379,28 +379,36 @@
                                 @csrf
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="name">Your Name *</label>
+                                        <label for="name" @error('name') style="color: red" @enderror>
+                                            Your Name * @error('name') ( {{ $message }} )@enderror
+                                        </label>
                                         <input id="name" name="name" type="text" class="form-control" required="">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="phone">Your Phone *</label>
+                                        <label for="phone" @error('phone') style="color: red" @enderror>
+                                            Your Phone * @error('phone') ( {{ $message }} ) @enderror
+                                        </label>
                                         <input id="phone" name="phone" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="service">Service *</label>
+                                        <label for="service" @error('service') style="color: red" @enderror>
+                                            Service * @error('service') ( {{ $message }} )@enderror
+                                        </label>
                                         <input id="service" name="service" type="text" class="form-control" required="">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="user_id">Master ID *</label>
+                                        <label for="user_id" @error('user_id') style="color: red" @enderror>
+                                            Master ID * @error('user_id')( {{ $message }} )@enderror
+                                        </label>
                                         <input id="user_id" name="user_id" type="text" class="form-control">
                                     </div>
                                 </div>
