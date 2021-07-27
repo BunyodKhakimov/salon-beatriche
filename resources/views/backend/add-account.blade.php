@@ -15,9 +15,9 @@
                         </div>
                     </div>
                     <div class="row mt-4 tm-edit-product-row">
-                        <div class="col-xl-7 col-lg-7 col-md-12">
-                            <form action="{{route('user.store')}}" method="POST" class="tm-edit-product-form">
-                                @csrf
+                        <form action="{{route('user.store')}}" method="POST" class="tm-edit-product-form">
+                            @csrf
+                            <div class="col-xl-7 col-lg-7 col-md-12">
                                 <div class="input-group mb-3 form-group">
                                     <label for="role" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Role</label>
                                     <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="role" name="role">
@@ -53,17 +53,17 @@
                                         <button type="submit" class="btn btn-primary">Add</button>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4 form-group">
-                            <div class="tm-product-img-dummy mx-auto">
-                                <i class="fas fa-5x fa-cloud-upload-alt" onclick="document.getElementById('fileInput').click();"></i>
                             </div>
-                            <div class="custom-file mt-3 mb-3">
-                                <input id="fileInput" type="file" style="display:none;" />
-                                <input type="button" class="btn btn-primary d-block mx-auto" value="Upload ..." onclick="document.getElementById('fileInput').click();"/>
+                            <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4 form-group">
+                                <div class="tm-product-img-dummy mx-auto">
+                                    <i class="fas fa-5x fa-cloud-upload-alt" onclick="document.getElementById('fileInput').click();"></i>
+                                </div>
+                                <div class="custom-file mt-3 mb-3">
+                                    <input id="fileInput" type="file" style="display:none;" />
+                                    <input type="button" class="btn btn-primary d-block mx-auto" value="Upload ..." onclick="document.getElementById('fileInput').click();"/>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

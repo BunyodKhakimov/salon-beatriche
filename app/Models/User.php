@@ -62,4 +62,8 @@ class User extends Authenticatable
         return $this->hasMany(Service::class);
     }
 
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'auth_by')->latest();
+    }
 }

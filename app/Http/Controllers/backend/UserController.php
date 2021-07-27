@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Image;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -55,6 +58,17 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();
+
+        if (isset($request->file)) {
+            $path = Storage::disk('s3')->put('images/'. $user->id, $request->file);
+            $image = new Image();
+            $image->title = $request->file_title ?? $user->name . '_' . now()->format('YmdHis');
+            $image->path = $path;
+            $image->auth_by = $user->id;
+            $image->size = $request->file->getClientSize();
+            $image->save();
+        }
+
         return redirect()->to(url("/backend/user/$user->id/edit"));
     }
 
@@ -105,6 +119,16 @@ class UserController extends Controller
         $user->info = $request->info;
         $user->email = $request->email;
         $user->update();
+
+        if (isset($request->file)) {
+            $path = Storage::disk('s3')->put('images/'. $user->id, $request->file);
+            $image = new Image();
+            $image->title = $request->file_title ?? $user->name . '_' . now()->format('YmdHis');
+            $image->path = $path;
+            $image->auth_by = $user->id;
+            $image->size = $request->file->getClientSize();
+            $image->save();
+        }
 
         return redirect()->to(url("/backend/user/$user->id/edit"));
     }
